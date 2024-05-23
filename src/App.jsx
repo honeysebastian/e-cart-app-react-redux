@@ -1,14 +1,20 @@
 import React from 'react'
-import Header from './components/Header'
 import Footer from './components/Footer'
+import Home from './pages/Home'
+import Wishlist from './pages/Wishlist'
+import Cart from './pages/Cart'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
   return (
-    <div>
-      <Header/>
-      App
-      <Footer/>
-    </div>
+    <>
+     <Routes>
+      <Route element={<Home/>} path='/'></Route>
+      <Route element={<Wishlist/>} path='/wishlist'></Route>
+      <Route element={<Cart/>} path='/cart'></Route>
+     </Routes>
+     <Footer/>
+    </>
   )
 }
 
