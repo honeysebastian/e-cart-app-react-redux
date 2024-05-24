@@ -34,12 +34,12 @@ function Footer() {
                         <button style={{ color: 'white', width: '60px', height: '60px' }} className='bg-warning border-0 rounded fw-bolder fs-5 '><i className="fa-solid fa-arrow-right"></i></button>
                     </div>
                     <div className="d-flex justify-content-between mt-4">
-                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'> <i class="fa-solid fa-envelope"></i></a>
-                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i class="fa-brands fa-twitter"></i></a>
-                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i class="fa-brands fa-linkedin"></i></a>
-                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i class="fa-brands fa-instagram"></i></a>
-                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i class="fa-brands fa-github"></i></a>
-                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i class="fa-brands fa-facebook"></i></a>
+                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'> <i className="fa-solid fa-envelope"></i></a>
+                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-twitter"></i></a>
+                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-linkedin"></i></a>
+                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-instagram"></i></a>
+                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-github"></i></a>
+                        <a href='' style={{ textDecoration: 'none', color: 'white' }} target='_blank'><i className="fa-brands fa-facebook"></i></a>
                     </div>
                 </div>
             </div>
