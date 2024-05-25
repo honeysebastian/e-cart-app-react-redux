@@ -1,8 +1,24 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
 import { Col, Row } from 'react-bootstrap'
+import { useParams } from 'react-router-dom'
 
 function View() {
+  const [product,setProduct]=useState({})
+  console.log(product);
+
+  const {id}=useParams()
+  console.log(id);
+
+  useEffect(()=>{
+   if(localStorage.getItem("allProducts")){
+    const allProducts = JSON.parse(localStorage.getItem("allProducts"))
+    setProduct(allProducts.find(item=>item.id==id))
+
+   }
+  },[])
+
+  
   return (
     <>
     <Header/>
@@ -10,20 +26,18 @@ function View() {
       <div className="row">
         <div className="col-lg-1"></div>
         <div className="col-lg-4">
-          <img className='img-fluid' src="https://media.wired.com/photos/6500ad57fe61eb702d721b58/1:1/w_1800,h_1800,c_limit/Apple-iPhone-15-Pro-Hero-Gear.jpg" alt="" />
+          <img className='w-100' height={'400vh'} src={product?.thumbnail} alt="" />
         </div>
         <div className="col-lg-1"></div>
         <div className="col-lg-6">
-          <h5>PID : 5</h5>
-          <h1>Title</h1>
-          <h3 className="fw-bolder text-danger">$ 99.99</h3>
-          <p style={{textAlign:'justify'}}><span className='fw-bolder'>Description:</span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, labore. Harum perspiciatis temporibus maxime aut qui accusamus delectus at dolorem ex neque dignissimos enim iste odio, ratione consequatur excepturi mollitia.</p>
+          <h5>PID :{product?.id}</h5>
+          <h1>{product?.title}</h1>
+          <h3 className="fw-bolder text-danger">$ {product?.price}</h3>
+          <p style={{textAlign:'justify'}}><span className='fw-bolder'>Description: </span>{product?.description}</p>
           <div className='d-flex justify-content-around mt-5'>
-            <button className='btn btn-danger'>Add to Wishlist</button>
-            <button className='btn btn-success'>Add to Cart</button>
+            <button className='btn btn-outline-danger fw-bolder'>Add to Wishlist</button>
+            <button className='btn btn-outline-success fw-bolder'>Add to Cart</button>
           </div>
-
-
         </div>
       </div>
     </div>

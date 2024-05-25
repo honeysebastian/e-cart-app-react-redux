@@ -3,9 +3,13 @@ import { Badge } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { searchProduct } from '../redux/slice/productSlice';
 
 function Header({insideHome}) {
+
+  const dispatch=useDispatch()
   return (
     <>
       <Navbar expand="lg" className="bg-info w-100 position-fixed top-0" style={{ zIndex: '10' }}>
@@ -15,7 +19,7 @@ function Header({insideHome}) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               { insideHome && <Nav.Link>
-                <input style={{ width: '500px' }} type="text" className='border-0 rounded p-1' placeholder='Search products here!!' />
+                <input onChange={e=>dispatch(searchProduct(e.target.value.toLowerCase()))} style={{ width: '500px' }} type="text" className='border-0 rounded p-1' placeholder='Search products here!!' />
               </Nav.Link>}
               <Nav.Link><Link className='fw-bold' style={{ textDecoration: 'none', color: 'white' }} to={'/wishlist'}><i className='fa-solid fa-heart text-danger'></i>Wishlist <Badge>10</Badge></Link></Nav.Link>
               <Nav.Link><Link className='fw-bold' style={{ textDecoration: 'none', color: 'white' }} to={'/cart'}><i className='fa-solid fa-cart-plus text-success'></i>Cart<Badge>10</Badge></Link></Nav.Link>
