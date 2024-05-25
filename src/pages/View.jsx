@@ -1,22 +1,35 @@
 import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
-import { Col, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToWishlist } from '../redux/slice/wishlistSlice'
 
 function View() {
   const [product,setProduct]=useState({})
-  console.log(product);
-
   const {id}=useParams()
-  console.log(id);
+
+  const userWishlist = useSelector(state=>state.wishlistReducer)
+ 
+  const dispatch=useDispatch()
+
 
   useEffect(()=>{
    if(localStorage.getItem("allProducts")){
     const allProducts = JSON.parse(localStorage.getItem("allProducts"))
     setProduct(allProducts.find(item=>item.id==id))
-
    }
   },[])
+
+  const handleWishlist=()=>{
+    if(userWishlist?.includes(product)){
+      alert("Product already in your Wishlist")
+
+    }else{
+      dispatch(addToWishlist(product))
+
+    }
+
+  }
 
   
   return (
@@ -35,7 +48,7 @@ function View() {
           <h3 className="fw-bolder text-danger">$ {product?.price}</h3>
           <p style={{textAlign:'justify'}}><span className='fw-bolder'>Description: </span>{product?.description}</p>
           <div className='d-flex justify-content-around mt-5'>
-            <button className='btn btn-outline-danger fw-bolder'>Add to Wishlist</button>
+            <button onClick={handleWishlist} className='btn btn-outline-danger fw-bolder'>Add to Wishlist</button>
             <button className='btn btn-outline-success fw-bolder'>Add to Cart</button>
           </div>
         </div>
