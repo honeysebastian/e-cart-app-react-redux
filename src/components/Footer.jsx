@@ -43,7 +43,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <p className='text-center'>Copyright &copy; Media Player 2024. Built with React</p>
+            <p className='text-center'>Copyright &copy; FF - Store 2024. Built with React</p>
         </div>
        </>
     )
