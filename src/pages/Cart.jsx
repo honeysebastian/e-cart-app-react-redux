@@ -1,7 +1,12 @@
 import React from 'react'
 import Header from '../components/Header'
+import { useDispatch, useSelector } from 'react-redux'
 
 function Cart() {
+
+  // const dispatch=useDispatch()
+  // const cartItems=useSelector(state=>state.cartReducer)
+  // console.log(cartItems);
   return (
     <>
     <Header/>

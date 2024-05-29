@@ -3,12 +3,14 @@ import Header from '../components/Header'
 import { useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWishlist } from '../redux/slice/wishlistSlice'
+import { addToCart } from '../redux/slice/cartSlice'
 
 function View() {
   const [product,setProduct]=useState({})
   const {id}=useParams()
 
   const userWishlist = useSelector(state=>state.wishlistReducer)
+  const existingProduct=useSelector(state=>state.cartReducer)
  
   const dispatch=useDispatch()
 
@@ -23,13 +25,22 @@ function View() {
   const handleWishlist=()=>{
     if(userWishlist?.includes(product)){
       alert("Product already in your Wishlist")
-
     }else{
       dispatch(addToWishlist(product))
+    }
+  }
+
+  const handleCart=()=>{
+    if(existingProduct){
+      alert("Items added")
+
+    }else{
+      alert("New item added")
 
     }
-
   }
+
+  
 
   
   return (
@@ -49,7 +60,7 @@ function View() {
           <p style={{textAlign:'justify'}}><span className='fw-bolder'>Description: </span>{product?.description}</p>
           <div className='d-flex justify-content-around mt-5'>
             <button onClick={handleWishlist} className='btn btn-outline-danger fw-bolder'>Add to Wishlist</button>
-            <button className='btn btn-outline-success fw-bolder'>Add to Cart</button>
+            <button onClick={handleCart} className='btn btn-outline-success fw-bolder'>Add to Cart</button>
           </div>
         </div>
       </div>
